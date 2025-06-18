@@ -1,0 +1,683 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Pratica Conectivos Lógicos</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="21699ce0-bdf2-80e4-8998-f70a98bf21e5" class="page sans"><header><h1 class="page-title">Pratica Conectivos Lógicos</h1><p class="page-description"></p></header><div class="page-body"><ol type="1" id="21699ce0-bdf2-8030-9254-ca7cb3bee849" class="numbered-list" start="1"><li><mark class="highlight-default">Eu estudei para a prova(X) </mark><mark class="highlight-purple"><strong>e</strong></mark> <mark class="highlight-default">fiz todos os exercícios(Y)</mark></li></ol><p id="21699ce0-bdf2-80d9-9405-e85bee8c84ac" class="">Conectivo: E (∧) </p><p id="21699ce0-bdf2-8069-a4ef-dc1b10eccba7" class="">Proposições: <div class="indented"><p id="21699ce0-bdf2-80f5-af93-e5f1401ca6a7" class=""><em><mark class="highlight-purple">●</mark></em><em> X: Eu estudei para a prova</em></p><p id="21699ce0-bdf2-805f-99f9-e7970396e5c6" class=""><em><mark class="highlight-purple">●</mark></em> Y: <em>Fiz todos os exercícios</em></p></div></p><table id="21699ce0-bdf2-800e-a7d7-e37e14123114" class="simple-table"><tbody><tr id="21699ce0-bdf2-800b-aecd-cfa8c1218f11"><td id=":c&lt;[" class="">X</td><td id="&gt;g{j" class="">Y</td><td id="LYYi" class="">X ∧ Y</td></tr><tr id="21699ce0-bdf2-8040-9e65-cb531928bf31"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-teal"><strong>V</strong></mark></td></tr><tr id="21699ce0-bdf2-806c-9994-f19cf96f21d2"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-80fe-81d9-c2bfd42d596b"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-8004-aaf8-c68c366ca284"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr></tbody></table><ol type="1" id="21699ce0-bdf2-80d3-8518-c01d35a15375" class="numbered-list" start="2"><li><mark class="highlight-default">Eu vou ao cinema(X)</mark> <mark class="highlight-teal"><strong>ou</strong></mark> <mark class="highlight-default">fico em casa assistindo séries.(Y)</mark></li></ol><p id="21699ce0-bdf2-80a5-af04-e527d58bf557" class="">Conectivo: OU (v) </p><p id="21699ce0-bdf2-806c-848f-f51cd946929a" class="">Proposições: <div class="indented"><p id="21699ce0-bdf2-8007-ac0a-f1944aaf68c6" class=""><em><mark class="highlight-purple">●</mark></em><em> X: </em><mark class="highlight-default">Eu vou ao cinema</mark></p><p id="21699ce0-bdf2-80fc-9b9c-c64a489c37fd" class=""><em><mark class="highlight-purple">●</mark></em> Y: <mark class="highlight-default">fico em casa assistindo séries</mark></p></div></p><table id="21699ce0-bdf2-8010-9897-e6c490603a24" class="simple-table"><tbody><tr id="21699ce0-bdf2-807d-a1e6-f60d23b89d37"><td id=":c&lt;[" class="">X</td><td id="&gt;g{j" class="">Y</td><td id="LYYi" class="">X v Y</td></tr><tr id="21699ce0-bdf2-80bc-b1bc-d8a787f0270b"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-teal"><strong>V</strong></mark></td></tr><tr id="21699ce0-bdf2-802e-8717-d17eaf5dda81"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-80f0-9447-f5190d02ba1b"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-809f-803f-dbf4da57e694"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr></tbody></table><ol type="1" id="21699ce0-bdf2-807d-a399-ff49dc9a7056" class="numbered-list" start="3"><li><mark class="highlight-purple"><strong>Se</strong></mark> <mark class="highlight-default">eu acordar cedo(X),</mark> <mark class="highlight-purple"><strong>então</strong></mark><mark class="highlight-default"> conseguirei pegar o ônibus.(Y)</mark></li></ol><p id="21699ce0-bdf2-80f7-819d-f3e852aaff78" class="">Conectivo: SE ENTÃO (→)</p><p id="21699ce0-bdf2-809a-a4fb-d54a5afe6611" class="">Proposições: <div class="indented"><p id="21699ce0-bdf2-803d-8ec9-dcc8d018c3a2" class=""><em><mark class="highlight-purple">●</mark></em><em> X: </em><mark class="highlight-purple"><strong>Se</strong></mark> <mark class="highlight-default">eu acordar cedo</mark></p><p id="21699ce0-bdf2-80b4-b31b-dedc8a4d1028" class=""><em><mark class="highlight-purple">●</mark></em> Y: <mark class="highlight-purple"><strong>então</strong></mark><mark class="highlight-default"> conseguirei pegar o ônibus.</mark></p></div></p><table id="21699ce0-bdf2-80a9-b8ac-f316202a6072" class="simple-table"><tbody><tr id="21699ce0-bdf2-804f-94a0-e9930d1833d2"><td id=":c&lt;[" class="">X</td><td id="&gt;g{j" class="">Y</td><td id="LYYi" class="">X →Y</td></tr><tr id="21699ce0-bdf2-808f-a66e-c3edd375c712"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-teal"><strong>V</strong></mark></td></tr><tr id="21699ce0-bdf2-8086-8e35-d5380227b10a"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-80e8-b6a0-c336f2a678ba"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-802f-aade-e86a259b21b8"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-teal">V</mark></td></tr></tbody></table><ol type="1" id="21699ce0-bdf2-80ba-b935-d5abc92a2cec" class="numbered-list" start="4"><li><mark class="highlight-teal">4. </mark><mark class="highlight-teal"><strong>Se</strong></mark> eu estudar muito, <mark class="highlight-teal"><strong>então</strong></mark> passarei na prova <mark class="highlight-teal"><strong>e</strong></mark><mark class="highlight-teal"> </mark>ganharei um presente.</li></ol><p id="21699ce0-bdf2-80ec-ad37-c0df311988ec" class="">Conectivo: SE ENTÃO (→) E (^)</p><p id="21699ce0-bdf2-800d-9f91-f8022a9d5d44" class="">Proposições: <div class="indented"><p id="21699ce0-bdf2-8041-8896-ffda2c467886" class=""><em><mark class="highlight-purple">●</mark></em><em> X: </em><mark class="highlight-teal"><strong>Se</strong></mark> eu estudar muito</p><p id="21699ce0-bdf2-8060-9309-d011d2959096" class=""><em><mark class="highlight-purple">●</mark></em> Y: <mark class="highlight-teal"><strong>então</strong></mark> passarei na prova</p><p id="21699ce0-bdf2-80c5-bb6c-ec9c9b1813db" class=""><em><mark class="highlight-purple">●</mark></em> Z: <mark class="highlight-teal"><strong>e</strong></mark><mark class="highlight-teal"> </mark>ganharei um presente.</p></div></p><table id="21699ce0-bdf2-80c0-aa02-dcd1b4205890" class="simple-table"><tbody><tr id="21699ce0-bdf2-8018-a2c6-c85bf46fe026"><td id=":c&lt;[" class="">X</td><td id="&gt;g{j" class="">Y</td><td id="LYYi" class="">Z</td><td id="C^Dw" class="">Y ^ Z</td><td id="^:a_" class="">X → (Y ^ Z)</td></tr><tr id="21699ce0-bdf2-80c2-8af6-ff7de5a7b951"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class="">V</td><td id="C^Dw" class=""><mark class="highlight-teal">V</mark></td><td id="^:a_" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-8010-b485-c8e86c10e5a8"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class="">F</td><td id="C^Dw" class=""><mark class="highlight-red">F</mark></td><td id="^:a_" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-8087-bdec-d7d24684906f"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class="">V</td><td id="C^Dw" class=""><mark class="highlight-red">F</mark></td><td id="^:a_" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-8042-bd23-d85cc8138cde"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class="">F</td><td id="C^Dw" class=""><mark class="highlight-red">F</mark></td><td id="^:a_" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-806b-9fa4-e71d62ba09d6"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class="">V</td><td id="C^Dw" class=""><mark class="highlight-teal">V</mark></td><td id="^:a_" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-8055-b899-c47aa60ce78a"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class="">F</td><td id="C^Dw" class=""><mark class="highlight-red">F</mark></td><td id="^:a_" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-8076-8c24-d49cbebb8c4f"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class="">V</td><td id="C^Dw" class=""><mark class="highlight-red">F</mark></td><td id="^:a_" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-80af-aeb1-dadd3989f0bf"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class="">F</td><td id="C^Dw" class=""><mark class="highlight-red">F</mark></td><td id="^:a_" class=""><mark class="highlight-teal">V</mark></td></tr></tbody></table><ul id="21699ce0-bdf2-8080-9b3c-c5abe1890556" class="toggle"><li><details open=""><summary><mark class="highlight-purple">5.</mark> Eu vou jogar videogame <mark class="highlight-purple"><strong>ou</strong></mark> vou estudar lógica de programação.</summary><p id="21699ce0-bdf2-80d6-ab2b-d8b8e2c24451" class="">Conectivo: OU (v) </p><p id="21699ce0-bdf2-80ff-9367-e385a7531a75" class="">Proposições: <div class="indented"><p id="21699ce0-bdf2-80ab-ab40-fe06fb2ccce8" class=""><em><mark class="highlight-purple">●</mark></em><em> X: </em>Eu vou jogar videogame</p><p id="21699ce0-bdf2-8011-9cca-e1cc495e2e72" class=""><em><mark class="highlight-purple">●</mark></em> Y: vou estudar lógica de programação.</p></div></p></details></li></ul><table id="21699ce0-bdf2-8080-b1b3-edbab5d9f1a0" class="simple-table"><tbody><tr id="21699ce0-bdf2-80a4-8fc8-fc210b7ab29c"><td id=":c&lt;[" class="">X</td><td id="&gt;g{j" class="">Y</td><td id="LYYi" class="">X v Y</td></tr><tr id="21699ce0-bdf2-80d4-b56f-e1d7306fe9ee"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-teal"><strong>V</strong></mark></td></tr><tr id="21699ce0-bdf2-8015-a8b7-d80dc9b34c22"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-8084-9cc9-dbcf70611fd6"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-8003-8888-ced2cfad73fe"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr></tbody></table><ul id="21699ce0-bdf2-805a-9db1-f1e4b40b74ff" class="toggle"><li><details open=""><summary><mark class="highlight-teal">6.</mark> Eu comi pizza <mark class="highlight-teal"><strong>e</strong></mark> tomei refrigerante.</summary><p id="21699ce0-bdf2-80d1-83fc-d3e8117cf34a" class="">Conectivo: E (^) </p><p id="21699ce0-bdf2-8058-bd33-e02916d11b1b" class="">Proposições: <div class="indented"><p id="21699ce0-bdf2-80f2-aba7-e32d7dbab952" class=""><em><mark class="highlight-purple">●</mark></em><em> X: </em>Eu comi pizza</p><p id="21699ce0-bdf2-8028-9004-f7fd5ccb6620" class=""><em><mark class="highlight-purple">●</mark></em> Y: tomei refrigerante.</p></div></p></details></li></ul><table id="21699ce0-bdf2-8027-9c87-fedd34b2c39e" class="simple-table"><tbody><tr id="21699ce0-bdf2-8027-9ea2-cfcd94da6c28"><td id=":c&lt;[" class="">X</td><td id="&gt;g{j" class="">Y</td><td id="LYYi" class="">X v Y</td></tr><tr id="21699ce0-bdf2-801c-b073-d846c857cf2c"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-teal"><strong>V</strong></mark></td></tr><tr id="21699ce0-bdf2-8064-8ed4-ec1d3ea75a78"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-80aa-ae37-fadfde29d8f3"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-8089-933f-c30f2b49c110"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr></tbody></table><ul id="21699ce0-bdf2-8099-803c-e670dec885e4" class="toggle"><li><details open=""><summary><mark class="highlight-purple">7.</mark> <mark class="highlight-purple"><strong>Se</strong></mark> eu tiver dinheiro, <mark class="highlight-purple"><strong>então</strong></mark> viajarei nas férias.</summary><p id="21699ce0-bdf2-8059-b655-ec624106bf05" class="">Conectivo: SE ENTÃO (→) </p><p id="21699ce0-bdf2-804b-aa34-fa7f18205097" class="">Proposições: <div class="indented"><p id="21699ce0-bdf2-8050-b779-cf1f7d2c2834" class=""><em><mark class="highlight-purple">●</mark></em><em> X: </em><mark class="highlight-purple"><strong>Se</strong></mark> eu tiver dinheiro</p><p id="21699ce0-bdf2-802f-993a-da87d77004b5" class=""><em><mark class="highlight-purple">●</mark></em> Y: <mark class="highlight-purple"><strong>então</strong></mark> viajarei nas férias.</p></div></p></details></li></ul><table id="21699ce0-bdf2-8017-a15c-f6c33bf3070e" class="simple-table"><tbody><tr id="21699ce0-bdf2-80c6-bbfb-da2d2188bca8"><td id=":c&lt;[" class="">X</td><td id="&gt;g{j" class="">Y</td><td id="LYYi" class="">X v Y</td></tr><tr id="21699ce0-bdf2-8080-a19e-e6d6b913a963"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-teal"><strong>V</strong></mark></td></tr><tr id="21699ce0-bdf2-80ce-8670-e1c2f5c56d2f"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-804b-941a-d09dcd00abcc"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-teal"><strong>V</strong></mark></td></tr><tr id="21699ce0-bdf2-8063-bba7-e4c58d79ef45"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-teal"><strong>V</strong></mark></td></tr></tbody></table><ul id="21699ce0-bdf2-8068-af41-d5e51592fb8d" class="toggle"><li><details open=""><summary><mark class="highlight-teal">8.</mark> Eu lerei um livro <mark class="highlight-teal"><strong>se e somente se</strong></mark> terminar meu trabalho.</summary><p id="21699ce0-bdf2-8053-9e98-eb4ccc631ac2" class="">Conectivo: SE E SOMENTE SE (↔)</p><p id="21699ce0-bdf2-80f0-9394-f89aa045c9d4" class="">Proposições: <div class="indented"><p id="21699ce0-bdf2-8027-b4e6-c1885316a873" class=""><em><mark class="highlight-purple">●</mark></em><em> X: Eu lerei o livro</em></p><p id="21699ce0-bdf2-80a8-b643-ec83e25f97f8" class=""><em><mark class="highlight-purple">●</mark></em> Y: <em>Terminar meu trabalho</em></p></div></p></details></li></ul><table id="21699ce0-bdf2-80cb-bc6e-cc74dc35b5a2" class="simple-table"><tbody><tr id="21699ce0-bdf2-80b4-ba37-f4a273420d33"><td id=":c&lt;[" class="">X</td><td id="&gt;g{j" class="">Y</td><td id="LYYi" class="">X v Y</td></tr><tr id="21699ce0-bdf2-8043-9d7f-d3a16662f6bd"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-teal"><strong>V</strong></mark></td></tr><tr id="21699ce0-bdf2-80a3-82a1-d98f19b66e38"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-805a-8e8d-edb880834f79"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-8029-a784-fede5d20a56e"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-teal"><strong>V</strong></mark></td></tr></tbody></table><ul id="21699ce0-bdf2-8075-aff2-c523906a5c63" class="toggle"><li><details open=""><summary><mark class="highlight-purple">9.</mark> <mark class="highlight-purple"><strong>Se</strong></mark> estiver sol, <mark class="highlight-purple"><strong>então</strong></mark> irei à praia <mark class="highlight-purple"><strong>ou</strong></mark> ao parque.</summary><p id="21699ce0-bdf2-80b5-a58e-f78cddc03bbf" class="">Conectivo: SE ENTÃO (→) OU (v)</p><p id="21699ce0-bdf2-8008-bf58-f8b0c1b659f8" class="">Proposições: <div class="indented"><p id="21699ce0-bdf2-806b-8dfc-e52f1b0ddb86" class=""><em><mark class="highlight-purple">●</mark></em><em> X: </em><mark class="highlight-purple"><strong>Se</strong></mark> estiver sol</p><p id="21699ce0-bdf2-8031-938d-e06b93758bd9" class=""><em><mark class="highlight-purple">●</mark></em> Y: <mark class="highlight-purple"><strong>então</strong></mark> irei à praia</p><p id="21699ce0-bdf2-800e-b5f4-d87ac3544ed6" class=""><em><mark class="highlight-purple">●</mark></em> Z: <mark class="highlight-purple"><strong>ou</strong></mark> ao parque.</p></div></p></details></li></ul><table id="21699ce0-bdf2-8010-a4f3-ea466f84ded3" class="simple-table"><tbody><tr id="21699ce0-bdf2-8014-b18e-e95248b9e88b"><td id=":c&lt;[" class="">X</td><td id="&gt;g{j" class="">Y</td><td id="LYYi" class="">Z</td><td id="C^Dw" class="">Y v Z</td><td id="^:a_" class="">X → (Y ^ Z)</td></tr><tr id="21699ce0-bdf2-8006-ba47-dab5f2fd37f9"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class="">V</td><td id="C^Dw" class=""><mark class="highlight-teal">V</mark></td><td id="^:a_" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-80a6-9f62-c309db3b0285"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class="">F</td><td id="C^Dw" class=""><mark class="highlight-teal">V</mark></td><td id="^:a_" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-8087-a80c-d19a6bbed934"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class="">V</td><td id="C^Dw" class=""><mark class="highlight-teal">V</mark></td><td id="^:a_" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-80bb-96dd-d50b133a2fc3"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class="">F</td><td id="C^Dw" class=""><mark class="highlight-red">F</mark></td><td id="^:a_" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-806e-a933-d8d0e5f37a85"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class="">V</td><td id="C^Dw" class=""><mark class="highlight-teal">V</mark></td><td id="^:a_" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-8082-bfa0-e67911560772"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class="">F</td><td id="C^Dw" class=""><mark class="highlight-teal">V</mark></td><td id="^:a_" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-809e-bf03-c7a00431c0c5"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class="">V</td><td id="C^Dw" class=""><mark class="highlight-teal">V</mark></td><td id="^:a_" class=""><mark class="highlight-teal">V</mark></td></tr><tr id="21699ce0-bdf2-80ca-b363-e4542abc9224"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class="">F</td><td id="C^Dw" class=""><mark class="highlight-red">F</mark></td><td id="^:a_" class=""><mark class="highlight-teal">V</mark></td></tr></tbody></table><ul id="21699ce0-bdf2-8081-bf95-fef7796ac396" class="toggle"><li><details open=""><summary><mark class="highlight-teal">10.</mark> Eu farei um bolo <mark class="highlight-teal"><strong>se e somente se</strong></mark> comprar os ingredientes.</summary><p id="21699ce0-bdf2-80b7-bfbd-ec0821565b2b" class="">Conectivo: SE E SOMENTE SE (↔)</p><p id="21699ce0-bdf2-8082-ac7f-e4ac00c3b2fe" class="">Proposições: <div class="indented"><p id="21699ce0-bdf2-8055-9ad8-c9b64cb03d90" class=""><em><mark class="highlight-purple">●</mark></em><em> X: Eu farei o bolo</em></p><p id="21699ce0-bdf2-80b3-97d3-f1e4c8d5dbf7" class=""><em><mark class="highlight-purple">●</mark></em> Y: <em>Comprar os ingredientes</em></p></div></p></details></li></ul><table id="21699ce0-bdf2-80bf-a4b5-ccc51ea44dc9" class="simple-table"><tbody><tr id="21699ce0-bdf2-80a5-8245-ef9dbca4ff0b"><td id=":c&lt;[" class="">X</td><td id="&gt;g{j" class="">Y</td><td id="LYYi" class="">X ↔ Y</td></tr><tr id="21699ce0-bdf2-805f-9bb8-cb3bc7c133f5"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-teal"><strong>V</strong></mark></td></tr><tr id="21699ce0-bdf2-8010-95d2-e0c3c55b5dea"><td id=":c&lt;[" class="">V</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-805b-893f-c8559d6cc498"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">V</td><td id="LYYi" class=""><mark class="highlight-red">F</mark></td></tr><tr id="21699ce0-bdf2-80ea-96a2-cb34405c930e"><td id=":c&lt;[" class="">F</td><td id="&gt;g{j" class="">F</td><td id="LYYi" class=""><mark class="highlight-teal"><strong>V</strong></mark></td></tr></tbody></table></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
